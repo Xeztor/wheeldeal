@@ -1,0 +1,85 @@
+:root {
+    --green: #00cc66;
+    --light-green: #99ff99;
+    --dark-green: #00994d;
+}
+/*html {*/
+/*    min-height: 100vh;*/
+/*}*/
+
+.custom-nav {
+    background-color: var(--green);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.08rem;
+}
+
+.nav-link {
+    text-align: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--green);
+    border-radius: 5px;
+    color: rgba(0,0,0,.8)!important;
+    font-size: 1.2rem;
+}
+
+.nav-link:hover {
+    color: black!important;
+    background-color: #00e6ac;
+    border-color: #00e6ac;
+}
+
+.nav-item .register {
+    border-color: var(--light-green);
+}
+
+.nav-item .register:hover {
+    background-color: var(--light-green);
+    opacity: 0.8;
+}
+
+
+div .steps-box {
+    border: 2px solid var(--green);
+    border-radius: 8px;
+    text-align: center;
+    background-color: #b3ffb3;
+    justify-content: center;
+}
+
+.steps-box h4 {
+    text-decoration: underline;
+    text-decoration-color: var(--green);
+}
+
+.steps-box p > a {
+    color: var(--dark-green);
+    text-decoration: none;
+    text-decoration-color: #b3ffb3;
+    font-weight: bold;
+    transition: text-decoration-color 0.2s ease-in-out;
+}
+
+.steps-box p > a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--dark-green);
+}
+
+.myfooter {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--green);
+    color: white;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px){
+    .right-arrow {
+        transform: rotate(90deg);
+        margin-top: 10px;
+        width: 25px;
+    }
+}
