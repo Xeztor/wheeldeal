@@ -22,6 +22,15 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
@@ -35,9 +44,9 @@
               <a class="nav-link" href="{% url 'login user' %}">Login</a>
             </li>
           {% else %}
-            <span class="navbar-text">
-                Hello, {{ request.user }}!
-            </span>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'profile details' %}">Profile</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout user' %}">Logout</a>
             </li>

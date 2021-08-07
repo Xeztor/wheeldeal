@@ -1,0 +1,5 @@
+{% if not is_complete %}
+  <div class="complete-notification">
+    <p>Your profile setup isn't completed. Complete it <a href="{% url 'profile edit' %}">Here</a></p>
+  </div>
+{% endif %}

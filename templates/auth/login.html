@@ -2,9 +2,9 @@
 
 {% block content %}
   <form method="post"
-        action="{% url 'register user' %}">
+        action="{% url 'login user' %}">
     {% csrf_token %}
     {{ form }}
-    <button>Register</button>
+    <button>Login</button>
   </form>
 {% endblock %}

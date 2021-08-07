@@ -4,6 +4,12 @@
     --dark-green: #00994d;
 }
 
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+
 .custom-nav {
     background-color: var(--green);
 }
@@ -18,12 +24,12 @@
     border-style: solid;
     border-color: var(--green);
     border-radius: 5px;
-    color: rgba(0,0,0,.8)!important;
+    color: rgba(0, 0, 0, .8) !important;
     font-size: 1.2rem;
 }
 
 .nav-link:hover {
-    color: black!important;
+    color: black !important;
     background-color: #00e6ac;
     border-color: #00e6ac;
 }
@@ -65,15 +71,16 @@ div .steps-box {
 }
 
 .myfooter {
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background-color: var(--green);
     color: white;
     text-align: center;
+    margin-top: 20px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     .right-arrow {
         transform: rotate(90deg);
         margin-top: 10px;
