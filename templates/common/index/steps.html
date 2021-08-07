@@ -4,7 +4,7 @@
   <div class="row justify-content-center mt-2">
     <div class="col-12 col-md-3 steps-box">
       <h4>Step 1</h4>
-      <a href="{% url 'register' %}">
+      <a href="{% url 'register user' %}">
         <img src="{% static 'images/profile_steps_ico.svg' %}"
              class="mx-auto d-block"
              height="40"
@@ -12,7 +12,7 @@
       </a>
       <p>
         First, you will need to either <br>
-        <a href="{% url 'register' %}">Register</a> or <a href="{% url 'sign in' %}">Sign In</a>.
+        <a href="{% url 'register user' %}">Register</a> or <a href="{% url 'login user' %}">Sign In</a>.
       </p>
     </div>
 

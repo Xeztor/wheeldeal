@@ -3,9 +3,6 @@
     --light-green: #99ff99;
     --dark-green: #00994d;
 }
-/*html {*/
-/*    min-height: 100vh;*/
-/*}*/
 
 .custom-nav {
     background-color: var(--green);
