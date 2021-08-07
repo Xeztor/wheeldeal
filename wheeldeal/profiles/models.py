@@ -56,3 +56,6 @@ class UserProfile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return self.user.email
