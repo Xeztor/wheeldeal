@@ -4,27 +4,40 @@
   <div class="col-12 col-md-3 steps-box">
     <h4>Step 1</h4>
     <a href="{% url 'register user' %}">
-      <img src="{% static 'images/profile_steps_ico.svg' %}"
+      <img src="{% static 'images/address_card_solid.svg' %}"
            class="mx-auto d-block"
            height="40"
            alt="">
     </a>
-    <p>
-      First, you will need to either <br>
-      <a href="{% url 'register user' %}">Register</a> or <a href="{% url 'login user' %}">Sign In</a>.
-    </p>
+{#    <div class="mt-2">#}
+      <p>
+        First, you will need to either <br>
+        <a href="{% url 'register user' %}">Register</a> or <a href="{% url 'login user' %}">Sign In</a>.
+      </p>
+{#    </div>#}
   </div>
 
   {% include 'common/index/right-arrow.html' %}
 
   <div class="col-12 col-md-3 steps-box mt-1 mt-md-0">
     <h4>Step 2</h4>
+    <img src="{% static 'images/package_icon.png' %}"
+         class="mx-auto d-block"
+         height="40"
+         alt="">
+    <p>Prepare your package. Take a photo of it and put it into your orders list.</p>
   </div>
 
   {% include 'common/index/right-arrow.html' %}
 
   <div class="col-12 col-md-3 steps-box mt-1 mt-md-0">
     <h4>Step 3</h4>
+    <img src="{% static 'images/cycling_steps.png' %}"
+         class="mx-auto d-block"
+         height="40"
+         alt="">
+    <p>One of our cyclists will take your order as soon as possible and your package will be delivered to the intended
+      address.</p>
   </div>
 
 </div>

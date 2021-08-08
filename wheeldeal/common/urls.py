@@ -1,7 +1,9 @@
 from django.urls import path
 
-from wheeldeal.common.views import index
+from wheeldeal.common.views import IndexView, AboutUsView, ContactsView
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('', IndexView.as_view(), name='index'),
+    path('about-us/', AboutUsView.as_view(), name='about us'),
+    path('contacts/', ContactsView.as_view(), name='contacts'),
 ]

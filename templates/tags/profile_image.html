@@ -1,0 +1,13 @@
+{% load static %}
+{% load profile_extras %}
+
+{% if profile_image %}
+  <img class="rounded-circle"
+       height="{{ profile_image_height }}px"
+       src="{{ profile_image.url }}"
+       alt="">
+{% else %}
+  <img height="{{ profile_image_height }}px"
+       src="{% static 'images/generic_avatar.svg' %}"
+       alt="">
+{% endif %}

@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h2 class="text-center">Add Order</h2>
+  <form method="post"
+        action="{% url 'add order' %}">
+    {% csrf_token %}
+    {{ form }}
+  </form>
+{% endblock %}

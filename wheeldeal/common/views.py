@@ -1,12 +1,16 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 from wheeldeal.profiles.models import UserProfile
 
 
-def index(request):
-    context = {}
-    if request.user.is_authenticated:
-        profile = UserProfile.objects.get(user_id=request.user.id)
-        context['is_complete'] = profile.is_complete,
+class IndexView(TemplateView):
+    template_name = 'common/index.html'
 
-    return render(request, 'common/index.html', context)
+
+class AboutUsView(TemplateView):
+    template_name = 'common/about_us.html'
+
+
+class ContactsView(TemplateView):
+    template_name = 'common/contacts.html'

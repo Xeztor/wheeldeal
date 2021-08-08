@@ -42,6 +42,7 @@ class UserProfile(models.Model):
     price_for_delivery = models.DecimalField(
         decimal_places=2,
         max_digits=4,
+        blank=True,
         null=True,
     )
     city = models.ForeignKey(
