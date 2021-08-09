@@ -8,9 +8,9 @@
     {% for order in orders %}
       <div class="card" style="width: 18rem;">
         {% if order.image %}
-          <img class="" src="{{ order.image.url }}" alt="" height="80" width="80">
+          <img class="mx-auto" src="{{ order.image.url }}" alt="" height="80" width="80">
         {% else %}
-          <img class="" src="{% static 'images/generic_package.svg' %}" alt="" height="80" width="80">
+          <img class="mx-auto" src="{% static 'images/generic_package.svg' %}" alt="" height="80" width="80">
         {% endif %}
 
         <div class="card-body">
