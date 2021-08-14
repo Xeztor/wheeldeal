@@ -1,23 +1,33 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-  <div class="row justify-content-center mt-2">
+  <div class="row justify-content-center mt-2 profile-frame">
     <div class="col-md-4">
-      <img src="{{ profile.image.url }}" alt="" height="200">
+      <img class="mx-auto d-block" src="{{ profile.image.url }}" alt="" height="300">
     </div>
     <div class="col-md-8">
-      Email: {{ request.user.email }}
-      Name: {{ profile.first_name }} {{ profile.last_name }}
-      Age: {{ profile.age }}
-      City: {{ profile.city }}
-      Address: {{ profile.address }}
-      {% if profile.is_deliveryman %}
-        {% if not profile.price_for_delivery %}
-          Delivery pricing: Negotiable
-        {% else %}
-          Delivery pricing: {{ profile.price_for_delivery }}
-        {% endif %}
-      {% endif %}
+      <div class="row">
+        <h4>Profile Information</h4>
+      <hr>
+        <div class="col-md">
+
+          <p>Email: {{ request.user.email }}</p>
+          <p>Name: {{ profile.first_name }} {{ profile.last_name }}</p>
+          <p>Age: {{ profile.age }}</p>
+        </div>
+        <div class="col-md">
+          <p>City: {{ profile.city }}</p>
+          <p>Address: {{ profile.address }}</p>
+          {% if profile.is_deliveryman %}
+            {% if not profile.price_for_delivery %}
+              Delivery pricing: Negotiable
+            {% else %}
+              Delivery pricing: {{ profile.price_for_delivery }}
+            {% endif %}
+          {% endif %}
+        </div>
+        <p><a class="btn btn-success" href="{% url 'profile edit' %}">Edit Profile</a></p>
+      </div>
     </div>
   </div>
 {% endblock %}

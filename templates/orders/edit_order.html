@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <div class="col-md-6 mx-auto my-2 p-2 border">
+    <h4 class="text-center label orders-label">Change order details</h4>
+    <form method="post"
+          action="{% url 'order edit' order.id %}"
+          enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form }}
+      <button class="btn btn-success mt-2">Save changes</button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,10 +1,15 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-  <h2 class="text-center">Add Order</h2>
-  <form method="post"
-        action="{% url 'add order' %}">
-    {% csrf_token %}
-    {{ form }}
-  </form>
+  <div class="col-md-4 mx-auto my-2 p-2 border">
+    <h4 class="text-center label orders-label">Add order</h4>
+    <form method="post"
+          action="{% url 'add order' %}">
+      {% csrf_token %}
+      {{ form }}
+      <br>
+      <button class="btn btn-success">Add Order</button>
+    </form>
+  </div>
+
 {% endblock %}

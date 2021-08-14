@@ -7,4 +7,10 @@ from wheeldeal.orders.models import Order
 class CreateOrderForm(FormControlMixin, forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('type', 'destination_address', 'image', )
+        fields = ('type', 'destination_address', 'image',)
+
+
+class EditOrderForm(FormControlMixin, forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ('type', 'destination_address', 'image',)

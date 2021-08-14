@@ -5,44 +5,56 @@
 {% block content %}
   {% add_profile_context %}
   <div class="justify-content-center">
-  {% for order in orders %}
-    <div class="card my-2" style="width: 18rem;">
-      {% if order.image %}
-        <img class="mx-auto" src="{{ order.image.url }}" alt="" height="80" width="80">
-      {% else %}
-        <img class="mx-auto" src="{% static 'images/generic_package.svg' %}" alt="" height="80" width="80">
-      {% endif %}
-      <div class="card-body">
-        <h5 class="card-title">Type: {{ order.type }}</h5>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Destination Address: {{ order.destination_address }}</li>
-        <li class="list-group-item">Date Added: {{ order.date_made }}</li>
-
-        {% if order.state == 'complete' %}
-          <li class="list-group-item">Date Delivered: {{ order.date_delivered }}</li>
-          <li class="list-group-item">Status: <span class="btn-success">Complete</span></li>
-        {% elif order.state == 'delivering' %}
-          <li class="list-group-item">Status: <span class="btn-warning">Delivering Now</span></li>
+    {% for order in orders %}
+      <div class="card my-2" style="width: 18rem;">
+        {% if order.image %}
+          <img class="mx-auto" src="{{ order.image.url }}" alt="" height="80" width="80">
         {% else %}
-          <li class="list-group-item">Status: <span class="btn-danger">Not complete</span></li>
+          <img class="mx-auto" src="{% static 'images/generic_package.svg' %}" alt="" height="80" width="80">
         {% endif %}
-
-        {% if profile.is_deliveryman %}
-          <li class="list-group-item">Client Name: {{ order.client.first_name }} {{ order.client.last_name }}</li>
-          <li class="list-group-item">Client Address: {{ order.client.address }}</li>
-        {% endif %}
-      </ul>
-      {% if profile.is_deliveryman and not order.state == 'complete'%}
         <div class="card-body">
-          <form method="post"
-                action="{% url 'complete order' order.id %}">
-            {% csrf_token %}
-            <button class="btn btn-success">Complete Order</button>
-          </form>
+          <h5 class="card-title">Type: {{ order.type }}</h5>
         </div>
-      {% endif %}
-    </div>
-  {% endfor %}
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Destination Address: {{ order.destination_address }}</li>
+          <li class="list-group-item">Date Added: {{ order.date_made }}</li>
+
+          {% if order.state == 'complete' %}
+            <li class="list-group-item">Date Delivered: {{ order.date_delivered }}</li>
+            <li class="list-group-item">Status: <span class="btn-success">Complete</span></li>
+          {% elif order.state == 'delivering' %}
+            <li class="list-group-item">Status: <span class="btn-warning">Delivering Now</span></li>
+          {% else %}
+            <li class="list-group-item">Status: <span class="btn-danger">Not complete</span></li>
+          {% endif %}
+
+          {% if profile.is_deliveryman %}
+            <li class="list-group-item">Client Name: {{ order.client.first_name }} {{ order.client.last_name }}</li>
+            <li class="list-group-item">Client Address: {{ order.client.address }}</li>
+          {% endif %}
+        </ul>
+        {% if profile.is_deliveryman %}
+          {% if not order.state == 'complete' %}
+            <div class="card-body">
+              <form method="post"
+                    action="{% url 'complete order' order.id %}">
+                {% csrf_token %}
+                <button class="btn btn-success">Complete Order</button>
+              </form>
+            </div>
+          {% endif %}
+        {% else %}
+          {% if not order.state == 'complete' %}
+            <li class="list-group-item">
+              <a class="btn btn-success" href="{% url 'order details' order.id %}">Order Details</a>
+              <a class="btn btn-success" href="{% url 'order edit' order.id %}">Edit Order</a>
+            </li>
+            <li class="list-group-item">
+              <a class="btn btn-danger" href="{% url 'order delete' order.id %}">Delete Order</a>
+            </li>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}
