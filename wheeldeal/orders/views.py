@@ -3,6 +3,7 @@ from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
+from wheeldeal.core.decorators import only_delivery_guy_allowed
 from wheeldeal.core.utils import get_user_profile
 from wheeldeal.orders.forms import CreateOrderForm, EditOrderForm
 from wheeldeal.orders.models import Order
@@ -44,6 +45,7 @@ def orders_history(request):
     return render(request, 'orders/orders_history.html', context)
 
 
+@only_delivery_guy_allowed
 @login_required
 def orders_available(request):
     orders = Order.objects \
@@ -66,6 +68,7 @@ def order_details(request, pk):
     return render(request, 'orders/order_details.html', context)
 
 
+@only_delivery_guy_allowed
 @login_required
 def take_order(request, pk):
     order = Order.objects.get(pk=pk)
@@ -76,6 +79,7 @@ def take_order(request, pk):
     return redirect('orders history')
 
 
+@only_delivery_guy_allowed
 @login_required
 def complete_order(request, pk):
     order = Order.objects.get(pk=pk)
@@ -112,6 +116,7 @@ def order_edit(request, pk):
     return render(request, 'orders/edit_order.html', context)
 
 
+@login_required
 def order_delete(request, pk):
     order = Order.objects.get(pk=pk)
     order.delete()
