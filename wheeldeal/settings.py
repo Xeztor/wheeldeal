@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'wheeldeal.profiles',
     'wheeldeal.common',
     'wheeldeal.orders',
+    'wheeldeal.applicants',
 ]
 
 MIDDLEWARE = [

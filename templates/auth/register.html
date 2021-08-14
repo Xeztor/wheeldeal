@@ -1,10 +1,15 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-  <form method="post"
-        action="{% url 'register user' %}">
-    {% csrf_token %}
-    {{ form }}
-    <button>Register</button>
-  </form>
+  <div class="col-md-4 mx-auto my-2 p-2 border">
+    <h4 class="text-center label orders-label">Create your new account</h4>
+    <form method="post"
+          action="{% url 'register user' %}">
+      {% csrf_token %}
+      {{ form }}
+      <br>
+      <button class="btn btn-success">Register</button>
+    </form>
+  </div>
+
 {% endblock %}

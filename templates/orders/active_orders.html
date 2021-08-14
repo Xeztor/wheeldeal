@@ -4,38 +4,49 @@
 
 {% block content %}
   {% add_profile_context %}
-  <div class="justify-content-center mt-2">
+  {% if not orders %}
+    <h3 class="text-center label orders-label">There are no orders available right now.</h3>
+  {% else %}
+    <h3 class="text-center label orders-label">Orders Available</h3>
+  {% endif %}
+  <div class="mt-2">
     {% for order in orders %}
-      <div class="card" style="width: 18rem;">
-        {% if order.image %}
-          <img class="mx-auto" src="{{ order.image.url }}" alt="" height="80" width="80">
-        {% else %}
-          <img class="mx-auto" src="{% static 'images/generic_package.svg' %}" alt="" height="80" width="80">
-        {% endif %}
-
-        <div class="card-body">
-          <h5 class="card-title">Type: {{ order.type }}</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Destination Address: {{ order.destination_address }}</li>
-
-          {% if profile.is_deliveryman %}
-            <li class="list-group-item">Client Name: {{ order.client.first_name }} {{ order.client.last_name }}</li>
-            <li class="list-group-item">Client Address: {{ order.client.address }}</li>
-          {% endif %}
-        </ul>
-        {% if profile.is_deliveryman %}
-          <div class="card-body">
+      <div class="card px-0 mb-3 container-fluid custom-card">
+        <div class="row g-0">
+          <div class="col-md-2 justify-content-center">
+            {% if order.image %}
+              <img class="mx-auto d-block" src="{{ order.image.url }}" alt="" height="100" width="100">
+            {% else %}
+              <img class="mx-auto d-block" src="{% static 'images/generic_package.svg' %}" alt="" height="100"
+                   width="100">
+            {% endif %}
+          </div>
+          <div class="col-md-9">
+            <h5 class="card-title text-center">Package Type: {{ order.type }}</h5>
+            <hr>
+            <div class="row m-0">
+              <div class="col-md card-col">
+                <p class="card-text">Destination Address: {{ order.destination_address }}</p>
+              </div>
+              <div class="col-md card-col">
+                <p class="card-text">Client Name: {{ order.client.first_name }} {{ order.client.last_name }}</p>
+                <p class="card-text">Client Address: {{ order.client.address }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1 p-0">
             <form method="post"
+                  class="take-order"
                   action="{% url 'order details' order.id %}">
               {% csrf_token %}
-              <button>Take Order</button>
+              <button class="btn btn-success take-order">Take Order</button>
             </form>
           </div>
-        {% endif %}
+        </div>
+
+
       </div>
-    {% empty %}
-      <h3 class="text-center">There are no orders available right now.</h3>
+      </div>
     {% endfor %}
   </div>
 {% endblock %}

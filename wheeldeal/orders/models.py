@@ -13,8 +13,8 @@ class Order(models.Model):
     PACKAGE_TYPES = [
         ('Small Package', 'Small Package'),
         ('Small Box', 'Small Box'),
-        ('medium', 'Medium Box'),
-        ('large', 'Large Box'),
+        ('Medium Box', 'Medium Box'),
+        ('Large Box', 'Large Box'),
     ]
 
     type = models.CharField(
@@ -46,13 +46,13 @@ class Order(models.Model):
     )
 
     client = models.ForeignKey(
-        UserModel,
+        UserProfile,
         on_delete=models.CASCADE,
         related_name='client',
     )
 
     delivery_guy = models.ForeignKey(
-        UserModel,
+        UserProfile,
         on_delete=models.CASCADE,
         related_name='delivery_guy',
         blank=True,

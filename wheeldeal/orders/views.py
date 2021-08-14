@@ -7,6 +7,7 @@ from wheeldeal.core.utils import get_user_profile
 from wheeldeal.orders.forms import CreateOrderForm
 from wheeldeal.orders.models import Order
 from wheeldeal.orders.order_states import ORDER_STATES
+from wheeldeal.profiles.models import UserProfile
 
 
 @login_required
@@ -67,7 +68,8 @@ def order_details(request, pk):
 def take_order(request, pk):
     order = Order.objects.get(pk=pk)
     order.state = ORDER_STATES['1']
-    order.delivery_guy = request.user
+    profile = UserProfile.objects.get(pk=request.user.id)
+    order.delivery_guy = profile
     order.save()
     return redirect('orders history')
 

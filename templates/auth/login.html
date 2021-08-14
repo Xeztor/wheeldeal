@@ -1,10 +1,13 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-  <form method="post"
-        action="{% url 'login user' %}">
-    {% csrf_token %}
-    {{ form }}
-    <button>Login</button>
-  </form>
+  <div class="col-md-4 mx-auto mt-2 p-2 border">
+    <h4 class="text-center label orders-label">Login in into your account</h4>
+    <form method="post"
+          action="{% url 'login user' %}">
+      {% csrf_token %}
+      {{ form }}
+      <button class="btn btn-success mt-2">Login</button>
+    </form>
+  </div>
 {% endblock %}

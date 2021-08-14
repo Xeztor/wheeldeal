@@ -12,4 +12,5 @@ urlpatterns = [
     path('', include('wheeldeal.wheeldeal_auth.urls')),
     path('profiles/', include('wheeldeal.profiles.urls')),
     path('orders/', include('wheeldeal.orders.urls')),
+    path('', include('wheeldeal.applicants.urls')),
 ] + media

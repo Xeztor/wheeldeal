@@ -1,5 +1,27 @@
 <footer class="myfooter mt-auto container-fluid">
   <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <p class="fs-6 footer-header text-start">Navigation</p>
+        <ul class="list-unstyled">
+          <li class="text-start footer-item"><a class="footer-link px-1" href="{% url 'index' %}">Home</a></li>
+          {% if request.user.is_authenticated %}
+            <li class="text-start footer-item"><a class="footer-link px-1" href="{% url 'orders history' %}">Orders History</a></li>
+            <li class="text-start footer-item"><a class="footer-link px-1" href="{% url 'logout user' %}">Logout</a></li>
+          {% else %}
+            <li class="text-start footer-item"><a class="footer-link px-1" href="{% url 'login user' %}">Login</a></li>
+            <li class="text-start footer-item"><a class="footer-link px-1" href="{% url 'register user' %}">Register</a></li>
+          {% endif %}
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <p class="fs-6 footer-header text-start">About Us</p>
+        <ul class="list-unstyled">
+            <li class="text-start footer-item"><a class="footer-link px-1" href="{% url 'about us' %}">About us</a></li>
+            <li class="text-start footer-item"><a class="footer-link px-1" href="{% url 'contacts' %}">Contacts</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </footer>

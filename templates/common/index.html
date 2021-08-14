@@ -2,5 +2,17 @@
 {% load static %}
 
 {% block content %}
+  <div class="container-fluid text-center">
+    <img src="{% static 'images/cycling_steps.png' %}" alt="" height="100" width="100">
+    <p class="fs-2">We are providing easy-to-use bike courier services.
+      This way we are not only saving You time for your important tasks, but motivating young people to stay healthy
+      and fit.</p>
+  </div>
+  <hr>
   {% include 'common/index/steps.html' %}
+  <hr>
+  <div class="container-fluid">
+    <h3 class="text-center">You want to be part of Our Team ?</h3>
+    <p class="text-center fs-3">Prepare your Bicycle and <a class="apply-now-btn" href="{% url 'apply' %}">Apply Now</a></p>
+  </div>
 {% endblock %}

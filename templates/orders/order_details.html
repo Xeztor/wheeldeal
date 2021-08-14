@@ -1,24 +1,85 @@
 {% extends 'base/base.html' %}
+{% load static %}
 {% load profile_extras %}
 
 {% block content %}
   {% add_profile_context %}
-  <div class="justify-content-center mt-2">
-    <div>
-      {% if order.image %}
-        <img src="{{ order.image.url }}" alt="" height="300">
-      {% endif %}
-      <h4>Type: {{ order.type }}</h4>
-      <p>Destination Address: {{ order.destination_address }}</p>
+  <div class="card px-0 mb-3 container-fluid">
+    <div class="row g-0">
+
+      <div class="col-md-2 justify-content-center">
+        {% if order.image %}
+          <img class="mx-auto d-block" src="{{ order.image.url }}" alt="" height="100" width="100">
+        {% else %}
+          <img class="mx-auto d-block" src="{% static 'images/generic_package.svg' %}" alt="" height="100"
+               width="100">
+        {% endif %}
+      </div>
+
+      <div class="col-md-9">
+        <h5 class="card-title text-center">Package Type: {{ order.type }}</h5>
+        <div class="row m-0">
+
+          <div class="col-md card-col">
+            <p class="card-text">Destination Address: {{ order.destination_address }}</p>
+          </div>
+          {% if profile.is_deliveryman %}
+            <div class="col-md card-col">
+              <p class="card-text">Client Name: {{ order.client.first_name }} {{ order.client.last_name }}</p>
+              <p class="card-text">Client Address: {{ order.client.address }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
       {% if profile.is_deliveryman %}
-        <p>Client Name: {{ order.client.first_name }} {{ order.client.last_name }}</p>
-        <p>Client Address: {{ order.client.address }}</p>
+        <div class="container-fluid text-center">
+          <form method="post"
+                action="{% url 'take order' order.id %}">
+            {% csrf_token %}
+            <button class="btn btn-success mx-auto">Confirm</button>
+          </form>
+        </div>
       {% endif %}
-      <form method="post"
-            action="{% url 'take order' order.id %}">
-        {% csrf_token %}
-        <button>Confirm</button>
-      </form>
     </div>
   </div>
 {% endblock %}
+
+<div class="card px-0 mb-3 container-fluid">
+  <div class="row g-0">
+
+    <div class="col-md-2 justify-content-center">
+      {% if order.image %}
+        <img class="mx-auto d-block" src="{{ order.image.url }}" alt="" height="100" width="100">
+      {% else %}
+        <img class="mx-auto d-block" src="{% static 'images/generic_package.svg' %}" alt="" height="100"
+             width="100">
+      {% endif %}
+    </div>
+
+    <div class="col-md-9">
+      <h5 class="card-title text-center">Package Type: {{ order.type }}</h5>
+      <div class="row m-0">
+
+        <div class="col-md card-col">
+          <p class="card-text">Destination Address: {{ order.destination_address }}</p>
+        </div>
+        {% if profile.is_deliveryman %}
+          <div class="col-md card-col">
+            <p class="card-text">Client Name: {{ order.client.first_name }} {{ order.client.last_name }}</p>
+            <p class="card-text">Client Address: {{ order.client.address }}</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {% if profile.is_deliveryman %}
+      <div class="col-md-1 p-0">
+        <form method="post"
+              action="{% url 'take order' order.id %}">
+          {% csrf_token %}
+          <button>Confirm</button>
+        </form>
+      </div>
+    {% endif %}
+  </div>
+</div>

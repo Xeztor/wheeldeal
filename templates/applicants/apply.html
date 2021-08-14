@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <div class="col-md-4 mx-auto mt-2 p-2 border">
+    <h4 class="text-center label orders-label">Apply for joining our team.</h4>
+    <p class="text-center">You will need to provide us the following ID images.</p>
+    <form method="post"
+          action="{% url 'apply' %}"
+          enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form }}
+      <button class="btn btn-success mt-2">Submit</button>
+    </form>
+  </div>
+{% endblock %}
